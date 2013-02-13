@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+		html {
+			font-family: sans-serif;
+			color: green;
+		}
+		.hub-Leaderboard {
+
+		}
+		.hub-Leaderboard ul {
+			list-style-type: none;
+			padding-left: 0;
+		}
+		.hub-Leaderboard .hub-count {
+			font-weight: bold;
+		}
+		.hub-Leaderboard .hub-avatar {
+			height: 1em;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Leaderboard</h1>
+		<p>Top Commenters in the last 3 days</p>
+		<div id="example"></div>
+		<!-- Scripts -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="Leaderboard.js"></script>
+		<script>
+		var leaderboard = new Hub.Leaderboard({
+			apiToken: 'd26bfcb181fe6dac678aeeb862322b1c',
+			network: 'techcrunch.fyre.co',
+			siteId: 311145,
+			delta: { days: 3 },
+			el: document.getElementById('example')
+		}).render();
+		</script>
+	</body>
+</html>
