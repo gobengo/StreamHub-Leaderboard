@@ -1,4 +1,5 @@
 (function (window, $) {
+
 if ( ! window.Hub ) window.Hub = {};
 
 var Leaderboard = window.Hub.Leaderboard = function Leaderboard (opts) {
