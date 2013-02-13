@@ -23,7 +23,9 @@ var Leaderboard = window.Hub.Leaderboard = function Leaderboard (opts) {
 			});
 
 		$(sortedData).each(function (index, user) {
-			var $li = $('<li></li>');
+			var $li = $('<li></li>'),
+				jid = user.jid,
+				userId = jid && jid.split('@')[0];
 			$li.html(Leaderboard.userTemplate
 				.replace('{{ avatarUrl }}', user.avatar)
 				.replace('{{ bio }}', user.bio)
@@ -32,7 +34,9 @@ var Leaderboard = window.Hub.Leaderboard = function Leaderboard (opts) {
 				.replace('{{ firstName }}', user.first_name)
 				.replace('{{ lastName }}', user.last_name)
 				.replace('{{ location }}', user.location)
-				.replace('{{ id }}', user.user_id) );
+				.replace('{{ id }}', user.user_id)
+				.replace('{{ userId }}', userId)
+			);
 			$ul.prepend($li);
 		});
 	});
@@ -92,7 +96,7 @@ Leaderboard.template = '\
 </div>';
 
 Leaderboard.userTemplate = '\
-<div class="hub-author" data-hub-author-id="{{ id }}">\
+<div class="hub-author" data-hub-user-id="{{ userId }}">\
 	<span class="hub-count">{{ count }}</span>\
 	<img class="hub-avatar" src="{{ avatarUrl }}" />\
 	<span class="hub-display-name">{{ displayName }}</span>\
